@@ -442,7 +442,7 @@ const ProductCard = ({ product, onQuickView, onAddToCart, onToggleWishlist, isIn
               <span className="ml-2 text-sm text-muted-foreground line-through">${product.comparePrice}</span>
             )}
           </div>
-          <Button size="lg" onClick={onAddToCart} className="rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700">
+          <Button size="lg" onClick={onAddToCart} className="rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700 text-white">
             <ShoppingCart className="w-4 h-4 mr-2" /> Add
           </Button>
         </div>
@@ -739,6 +739,7 @@ export default function HomePage() {
     }
   }
   
+  
   // ============================================
   // MODERN NAVBAR
   // ============================================
@@ -746,8 +747,8 @@ export default function HomePage() {
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
       isScrolled 
-        ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-lg shadow-slate-500/5" 
-        : "bg-slate-900/80 backdrop-blur-md"
+        ? "bg-white dark:bg-slate-900 shadow-lg shadow-slate-500/5" 
+        : "bg-slate-900"
     )}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
@@ -760,32 +761,65 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-shadow">
               <Layers className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold text-white">
+            <span className={cn(
+              "text-2xl font-bold transition-colors",
+              isScrolled ? "text-slate-900 dark:text-white" : "text-white"
+            )}>
               NexusShop
             </span>
           </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <button onClick={() => store.setCurrentView('landing')} className="text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer relative group">
+            <button onClick={() => store.setCurrentView('landing')} className={cn(
+              "text-sm font-semibold transition-colors cursor-pointer relative group",
+              isScrolled ? "text-slate-600 hover:text-purple-600" : "text-white/90 hover:text-white"
+            )}>
               Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300",
+                isScrolled ? "bg-purple-600" : "bg-white"
+              )} />
             </button>
-            <button onClick={() => store.setCurrentView('products')} className="text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer relative group">
+            <button onClick={() => store.setCurrentView('products')} className={cn(
+              "text-sm font-semibold transition-colors cursor-pointer relative group",
+              isScrolled ? "text-slate-600 hover:text-purple-600" : "text-white/90 hover:text-white"
+            )}>
               Products
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300",
+                isScrolled ? "bg-purple-600" : "bg-white"
+              )} />
             </button>
-            <a href="#pricing" className="text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer relative group">
+            <a href="#pricing" className={cn(
+              "text-sm font-semibold transition-colors cursor-pointer relative group",
+              isScrolled ? "text-slate-600 hover:text-purple-600" : "text-white/90 hover:text-white"
+            )}>
               Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300",
+                isScrolled ? "bg-purple-600" : "bg-white"
+              )} />
             </a>
-            <a href="#testimonials" className="text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer relative group">
+            <a href="#testimonials" className={cn(
+              "text-sm font-semibold transition-colors cursor-pointer relative group",
+              isScrolled ? "text-slate-600 hover:text-purple-600" : "text-white/90 hover:text-white"
+            )}>
               Testimonials
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300",
+                isScrolled ? "bg-purple-600" : "bg-white"
+              )} />
             </a>
-            <a href="#contact" className="text-sm font-semibold text-white/90 hover:text-white transition-colors cursor-pointer relative group">
+            <a href="#contact" className={cn(
+              "text-sm font-semibold transition-colors cursor-pointer relative group",
+              isScrolled ? "text-slate-600 hover:text-purple-600" : "text-white/90 hover:text-white"
+            )}>
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300",
+                isScrolled ? "bg-purple-600" : "bg-white"
+              )} />
             </a>
           </nav>
 
@@ -793,10 +827,18 @@ export default function HomePage() {
           <div className="flex items-center gap-3">
             {/* Search - Desktop */}
             <div className="relative hidden lg:block">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Search className={cn(
+                "absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4",
+                isScrolled ? "text-slate-400" : "text-white/50"
+              )} />
               <Input
                 placeholder="Search products..."
-                className="pl-11 w-72 h-11 rounded-xl bg-white/10 border-0 focus:ring-2 focus:ring-purple-500 cursor-text text-white placeholder:text-white/50"
+                className={cn(
+                  "pl-11 w-72 h-11 rounded-xl border-0 focus:ring-2 focus:ring-purple-500 cursor-text",
+                  isScrolled 
+                    ? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400" 
+                    : "bg-white/10 text-white placeholder:text-white/50"
+                )}
                 value={store.searchQuery}
                 onChange={(e) => store.setSearchQuery(e.target.value)}
               />
@@ -807,7 +849,12 @@ export default function HomePage() {
               variant="ghost" 
               size="icon" 
               onClick={() => store.toggleCart()} 
-              className="relative w-11 h-11 rounded-xl cursor-pointer text-white hover:bg-white/10"
+              className={cn(
+                "relative w-11 h-11 rounded-xl cursor-pointer",
+                isScrolled 
+                  ? "text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800" 
+                  : "text-white hover:bg-white/10"
+              )}
             >
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
@@ -821,7 +868,12 @@ export default function HomePage() {
             {store.isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="relative w-11 h-11 rounded-xl cursor-pointer text-white hover:bg-white/10">
+                  <Button variant="ghost" size="icon" className={cn(
+                    "relative w-11 h-11 rounded-xl cursor-pointer",
+                    isScrolled 
+                      ? "hover:bg-slate-100 dark:hover:bg-slate-800" 
+                      : "text-white hover:bg-white/10"
+                  )}>
                     <Avatar className="w-9 h-9 ring-2 ring-purple-500/20">
                       <AvatarImage src={store.user?.avatar || undefined} />
                       <AvatarFallback className="bg-purple-600 text-white text-sm font-semibold">
@@ -858,7 +910,7 @@ export default function HomePage() {
             ) : (
               <Button 
                 onClick={() => store.openAuthModal('login')} 
-                className="h-11 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 shadow-lg shadow-purple-500/25 cursor-pointer"
+                className="h-11 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 text-white shadow-lg shadow-purple-500/25 cursor-pointer"
               >
                 <User className="w-4 h-4 mr-2" /> Sign In
               </Button>
@@ -868,7 +920,12 @@ export default function HomePage() {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="lg:hidden w-11 h-11 rounded-xl cursor-pointer text-white hover:bg-white/10" 
+              className={cn(
+                "lg:hidden w-11 h-11 rounded-xl cursor-pointer",
+                isScrolled 
+                  ? "text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800" 
+                  : "text-white hover:bg-white/10"
+              )}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -878,8 +935,6 @@ export default function HomePage() {
       </div>
     </header>
   )
-  
-  // ============================================
   // RENDER LANDING PAGE
   // ============================================
   const renderLandingPage = () => (
@@ -966,7 +1021,7 @@ export default function HomePage() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="h-14 px-8 text-lg rounded-2xl border-white/20 text-white hover:bg-white/10 cursor-pointer"
+                  className="h-14 px-8 text-lg rounded-2xl border-2 border-white text-white hover:bg-white hover:text-slate-900 cursor-pointer transition-colors"
                 >
                   <Play className="w-5 h-5 mr-2" /> Watch Demo
                 </Button>
@@ -1280,7 +1335,7 @@ export default function HomePage() {
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="h-14 px-6 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-slate-400 text-lg"
+                className="h-14 px-6 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50 text-lg"
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 required
@@ -2320,7 +2375,7 @@ export default function HomePage() {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-emerald-500 hover:bg-emerald-600">
+                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700 text-white">
                   Sign In
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">
@@ -2374,7 +2429,7 @@ export default function HomePage() {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-emerald-500 hover:bg-emerald-600">
+                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700 text-white">
                   Create Account
                 </Button>
               </form>
