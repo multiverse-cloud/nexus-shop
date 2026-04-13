@@ -166,7 +166,7 @@ async function main() {
       isFeatured: true,
       attributes: JSON.stringify({ color: ['Black', 'Silver', 'Blue'], connectivity: 'Bluetooth 5.2' }),
       tags: JSON.stringify(['audio', 'wireless', 'premium', 'noise-canceling']),
-      metaTitle: 'Premium Wireless Noise-Canceling Headphones | ShopName',
+      metaTitle: 'Premium Wireless Noise-Canceling Headphones | NexusShop',
       metaDesc: 'Buy the best wireless noise-canceling headphones with 30-hour battery life. Free shipping on orders over $100.',
     },
     {
@@ -765,7 +765,7 @@ async function main() {
     prisma.siteSetting.create({
       data: {
         key: 'site_name',
-        value: 'ShopName',
+        value: 'NexusShop',
         type: 'text',
         group: 'general',
       }
@@ -789,7 +789,7 @@ async function main() {
     prisma.siteSetting.create({
       data: {
         key: 'contact_email',
-        value: 'support@shopname.com',
+        value: 'support@nexusshop.com',
         type: 'text',
         group: 'contact',
       }
@@ -814,10 +814,10 @@ async function main() {
       data: {
         key: 'social_links',
         value: JSON.stringify({
-          twitter: 'https://twitter.com/shopname',
-          facebook: 'https://facebook.com/shopname',
-          instagram: 'https://instagram.com/shopname',
-          linkedin: 'https://linkedin.com/company/shopname'
+          twitter: 'https://twitter.com/nexusshop',
+          facebook: 'https://facebook.com/nexusshop',
+          instagram: 'https://instagram.com/nexusshop',
+          linkedin: 'https://linkedin.com/company/nexusshop'
         }),
         type: 'json',
         group: 'social',
@@ -943,7 +943,7 @@ async function main() {
     data: {
       userId: customer.id,
       type: 'SYSTEM' as NotificationType,
-      title: 'Welcome to ShopName!',
+      title: 'Welcome to NexusShop!',
       message: 'Thank you for joining us. Start exploring our products and enjoy exclusive member benefits.',
       data: JSON.stringify({ type: 'welcome' }),
       isRead: false,

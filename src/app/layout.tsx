@@ -14,24 +14,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: {
+    default: "NexusShop",
+    template: "%s | NexusShop",
+  },
+  description: "NexusShop is a premium SaaS and ecommerce platform for modern storefronts, subscriptions, and customer management.",
+  keywords: ["NexusShop", "ecommerce", "SaaS platform", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+  authors: [{ name: "NexusShop Team" }],
+  applicationName: "NexusShop",
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "NexusShop",
+    description: "A premium SaaS and ecommerce experience for selling products, managing subscriptions, and growing online revenue.",
+    siteName: "NexusShop",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "NexusShop",
+    description: "A premium SaaS and ecommerce experience for selling products, managing subscriptions, and growing online revenue.",
   },
 };
 
