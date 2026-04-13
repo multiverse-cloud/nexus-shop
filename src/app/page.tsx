@@ -190,7 +190,7 @@ const GoToTopButton = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-emerald-600 text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center cursor-pointer group"
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-emerald-500 text-white shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 flex items-center justify-center cursor-pointer group"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -215,7 +215,7 @@ const TrustedBrands = () => {
   ]
   
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+    <section className="py-16 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <p className="text-center text-sm font-medium text-muted-foreground mb-10 tracking-wider uppercase">
           Trusted by teams at world-leading companies
@@ -250,11 +250,11 @@ const FeatureCard = ({ icon: Icon, title, description, index }: { icon: any; tit
     whileHover={{ y: -10, scale: 1.02 }}
     className="group relative cursor-pointer"
   >
-    <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-emerald-600/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    <div className="absolute inset-0 bg-purple-500/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <Card className="relative bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-0 shadow-lg hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 rounded-3xl overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-500 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
       <CardHeader className="pb-4">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/25 group-hover:scale-110 transition-transform duration-300">
+        <div className="w-16 h-16 rounded-2xl bg-purple-600 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/25 group-hover:scale-110 transition-transform duration-300">
           <Icon className="w-8 h-8 text-white" />
         </div>
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
@@ -286,7 +286,7 @@ const PricingCard = ({ plan, onSelect, index }: { plan: Plan; onSelect: () => vo
     >
       {plan.isFeatured && (
         <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
-          <Badge className="bg-gradient-to-r from-purple-600 to-emerald-600 text-white px-6 py-1.5 text-sm font-semibold shadow-lg">
+          <Badge className="bg-purple-600 text-white px-6 py-1.5 text-sm font-semibold shadow-lg">
             Most Popular
           </Badge>
         </div>
@@ -298,7 +298,7 @@ const PricingCard = ({ plan, onSelect, index }: { plan: Plan; onSelect: () => vo
           : "hover:shadow-2xl hover:shadow-slate-500/10"
       )}>
         {plan.isFeatured && (
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-emerald-500/5" />
+          <div className="absolute inset-0 bg-purple-500/5" />
         )}
         <CardHeader className="text-center pb-4 pt-8">
           <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
@@ -315,7 +315,7 @@ const PricingCard = ({ plan, onSelect, index }: { plan: Plan; onSelect: () => vo
           <ul className="space-y-4 text-left mb-8">
             {features.map((feature: string, i: number) => (
               <li key={i} className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-600 to-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-purple-600 flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3 h-3 text-white" />
                 </div>
                 <span className="text-sm leading-relaxed">{feature}</span>
@@ -329,7 +329,7 @@ const PricingCard = ({ plan, onSelect, index }: { plan: Plan; onSelect: () => vo
             className={cn(
               "w-full h-12 text-base font-semibold rounded-xl transition-all duration-300 cursor-pointer",
               plan.isFeatured
-                ? "bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30"
+                ? "bg-purple-600 hover:bg-purple-700 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-purple-500/30"
                 : "bg-slate-900 dark:bg-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100"
             )}
           >
@@ -361,7 +361,7 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; ind
         <p className="text-muted-foreground mb-8 text-lg leading-relaxed italic">"{testimonial.content}"</p>
         <div className="flex items-center gap-4">
           <Avatar className="w-14 h-14 ring-2 ring-purple-500/20">
-            <AvatarFallback className="bg-gradient-to-br from-purple-600 to-emerald-600 text-white text-lg font-semibold">
+            <AvatarFallback className="bg-purple-600 text-white text-lg font-semibold">
               {testimonial.name.split(' ').map(n => n[0]).join('')}
             </AvatarFallback>
           </Avatar>
@@ -395,13 +395,13 @@ const ProductCard = ({ product, onQuickView, onAddToCart, onToggleWishlist, isIn
     className="group cursor-pointer"
   >
     <Card className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-0 shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 rounded-3xl">
-      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+      <div className="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
         <img
           src={product.featuredImage || JSON.parse(product.images)[0]}
           alt={product.name}
           className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
           <Button size="lg" variant="secondary" onClick={onQuickView} className="rounded-xl shadow-xl cursor-pointer">
             <Eye className="w-5 h-5 mr-2" /> Quick View
           </Button>
@@ -415,12 +415,12 @@ const ProductCard = ({ product, onQuickView, onAddToCart, onToggleWishlist, isIn
           <Heart className={cn("w-5 h-5", isInWishlist && "fill-red-500 text-red-500")} />
         </Button>
         {product.comparePrice && (
-          <Badge className="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full shadow-lg">
+          <Badge className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full shadow-lg">
             {Math.round((1 - product.price / product.comparePrice) * 100)}% OFF
           </Badge>
         )}
         {product.isFeatured && !product.comparePrice && (
-          <Badge className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full shadow-lg">
+          <Badge className="absolute top-4 left-4 bg-amber-500 text-white px-3 py-1 rounded-full shadow-lg">
             Featured
           </Badge>
         )}
@@ -442,7 +442,7 @@ const ProductCard = ({ product, onQuickView, onAddToCart, onToggleWishlist, isIn
               <span className="ml-2 text-sm text-muted-foreground line-through">${product.comparePrice}</span>
             )}
           </div>
-          <Button size="lg" onClick={onAddToCart} className="rounded-xl cursor-pointer bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700">
+          <Button size="lg" onClick={onAddToCart} className="rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700">
             <ShoppingCart className="w-4 h-4 mr-2" /> Add
           </Button>
         </div>
@@ -757,10 +757,10 @@ export default function HomePage() {
             className="flex items-center gap-3 cursor-pointer group"
             whileHover={{ scale: 1.02 }}
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-shadow">
+            <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 group-hover:shadow-purple-500/40 transition-shadow">
               <Layers className="w-6 h-6 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-purple-600 ">
               NexusShop
             </span>
           </motion.a>
@@ -769,23 +769,23 @@ export default function HomePage() {
           <nav className="hidden lg:flex items-center gap-8">
             <button onClick={() => store.setCurrentView('landing')} className="text-sm font-semibold hover:text-purple-600 transition-colors cursor-pointer relative group">
               Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
             </button>
             <button onClick={() => store.setCurrentView('products')} className="text-sm font-semibold hover:text-purple-600 transition-colors cursor-pointer relative group">
               Products
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
             </button>
             <a href="#pricing" className="text-sm font-semibold hover:text-purple-600 transition-colors cursor-pointer relative group">
               Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
             </a>
             <a href="#testimonials" className="text-sm font-semibold hover:text-purple-600 transition-colors cursor-pointer relative group">
               Testimonials
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
             </a>
             <a href="#contact" className="text-sm font-semibold hover:text-purple-600 transition-colors cursor-pointer relative group">
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-emerald-600 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 group-hover:w-full transition-all duration-300" />
             </a>
           </nav>
 
@@ -811,7 +811,7 @@ export default function HomePage() {
             >
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
-                <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 text-xs bg-gradient-to-r from-purple-600 to-emerald-600 border-0">
+                <Badge className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center p-0 text-xs bg-purple-600 border-0">
                   {cartCount}
                 </Badge>
               )}
@@ -824,7 +824,7 @@ export default function HomePage() {
                   <Button variant="ghost" size="icon" className="relative w-11 h-11 rounded-xl cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800">
                     <Avatar className="w-9 h-9 ring-2 ring-purple-500/20">
                       <AvatarImage src={store.user?.avatar || undefined} />
-                      <AvatarFallback className="bg-gradient-to-br from-purple-600 to-emerald-600 text-white text-sm font-semibold">
+                      <AvatarFallback className="bg-purple-600 text-white text-sm font-semibold">
                         {store.user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
                       </AvatarFallback>
                     </Avatar>
@@ -858,7 +858,7 @@ export default function HomePage() {
             ) : (
               <Button 
                 onClick={() => store.openAuthModal('login')} 
-                className="h-11 px-6 rounded-xl bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 shadow-lg shadow-purple-500/25 cursor-pointer"
+                className="h-11 px-6 rounded-xl bg-purple-600 hover:bg-purple-700 shadow-lg shadow-emerald-500/25 cursor-pointer"
               >
                 <User className="w-4 h-4 mr-2" /> Sign In
               </Button>
@@ -920,7 +920,7 @@ export default function HomePage() {
       
       {/* Hero Section - Premium Design */}
       <section className="relative pt-32 pb-24 overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900" />
+        <div className="absolute inset-0 bg-slate-900" />
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(148,163,184,0.15) 1px, transparent 0)", backgroundSize: '40px 40px' }} />
         
         {/* Animated gradient orbs */}
@@ -946,7 +946,7 @@ export default function HomePage() {
               
               <h1 className="text-5xl md:text-7xl font-extrabold mb-8 leading-tight text-white">
                 Build Your<br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent">
+                <span className="text-purple-500">
                   Digital Empire
                 </span>
               </h1>
@@ -958,7 +958,7 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4 mb-12">
                 <Button 
                   size="lg" 
-                  className="h-14 px-8 text-lg rounded-2xl bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 shadow-2xl shadow-purple-500/25 cursor-pointer" 
+                  className="h-14 px-8 text-lg rounded-2xl bg-purple-600 hover:bg-purple-700 shadow-2xl shadow-emerald-500/25 cursor-pointer" 
                   onClick={() => store.isAuthenticated ? store.setCurrentView('products') : store.openAuthModal('register')}
                 >
                   Get Started Free <ArrowRight className="w-5 h-5 ml-2" />
@@ -976,7 +976,7 @@ export default function HomePage() {
                 <div className="flex -space-x-4">
                   {[1, 2, 3, 4].map((i) => (
                     <Avatar key={i} className="w-12 h-12 border-4 border-slate-900 ring-2 ring-purple-500/20">
-                      <AvatarFallback className="bg-gradient-to-br from-purple-500 to-emerald-500 text-white font-semibold">
+                      <AvatarFallback className="bg-purple-500 text-white font-semibold">
                         {String.fromCharCode(64 + i)}
                       </AvatarFallback>
                     </Avatar>
@@ -999,7 +999,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-emerald-500/30 rounded-3xl blur-3xl" />
+              <div className="absolute inset-0 bg-purple-500/20 rounded-3xl blur-3xl" />
               <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
                 <div className="grid grid-cols-2 gap-6">
                   <motion.div 
@@ -1079,7 +1079,7 @@ export default function HomePage() {
             <Badge className="mb-4 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 px-4 py-1.5 rounded-full">Features</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Everything You Need to{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="bg-purple-600 ">
                 Succeed
               </span>
             </h2>
@@ -1130,7 +1130,7 @@ export default function HomePage() {
       </section>
       
       {/* Featured Products */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+      <section className="py-24 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-end justify-between mb-12">
             <div>
@@ -1170,7 +1170,7 @@ export default function HomePage() {
             <Badge className="mb-4 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 px-4 py-1.5 rounded-full">Pricing</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Simple, Transparent{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="bg-purple-600 ">
                 Pricing
               </span>
             </h2>
@@ -1199,7 +1199,7 @@ export default function HomePage() {
       </section>
       
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+      <section id="testimonials" className="py-24 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -1210,7 +1210,7 @@ export default function HomePage() {
             <Badge className="mb-4 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 px-4 py-1.5 rounded-full">Testimonials</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Loved by{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="bg-purple-600 ">
                 Thousands
               </span>
             </h2>
@@ -1239,7 +1239,7 @@ export default function HomePage() {
             <Badge className="mb-4 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 px-4 py-1.5 rounded-full">FAQ</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Frequently Asked{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+              <span className="bg-purple-600 ">
                 Questions
               </span>
             </h2>
@@ -1263,7 +1263,7 @@ export default function HomePage() {
       </section>
       
       {/* Newsletter Section */}
-      <section className="py-24 bg-gradient-to-r from-purple-900 via-purple-800 to-slate-900 relative overflow-hidden">
+      <section className="py-24 bg-purple-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)", backgroundSize: '30px 30px' }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -1294,7 +1294,7 @@ export default function HomePage() {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+      <section id="contact" className="py-24 bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16">
             <motion.div
@@ -1305,7 +1305,7 @@ export default function HomePage() {
               <Badge className="mb-4 bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20 px-4 py-1.5 rounded-full">Contact Us</Badge>
               <h2 className="text-4xl font-bold mb-6">
                 Get in{' '}
-                <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
+                <span className="bg-purple-600 ">
                   Touch
                 </span>
               </h2>
@@ -1315,7 +1315,7 @@ export default function HomePage() {
               
               <div className="space-y-8">
                 <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/10 to-purple-500/20 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center">
                     <Mail className="w-7 h-7 text-purple-600" />
                   </div>
                   <div>
@@ -1324,7 +1324,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-emerald-500/20 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
                     <Phone className="w-7 h-7 text-emerald-600" />
                   </div>
                   <div>
@@ -1333,7 +1333,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/10 to-amber-500/20 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center">
                     <MapPin className="w-7 h-7 text-amber-600" />
                   </div>
                   <div>
@@ -1430,7 +1430,7 @@ export default function HomePage() {
                           required
                         />
                       </div>
-                      <Button type="submit" size="lg" className="w-full h-14 rounded-xl bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 cursor-pointer">
+                      <Button type="submit" size="lg" className="w-full h-14 rounded-xl bg-purple-600 hover:bg-purple-700 cursor-pointer">
                         Send Message <Send className="w-5 h-5 ml-2" />
                       </Button>
                     </form>
@@ -1448,7 +1448,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-12 mb-16">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center">
                   <Layers className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-2xl font-bold text-white">NexusShop</span>
@@ -1515,7 +1515,7 @@ export default function HomePage() {
   // RENDER PRODUCTS PAGE
   // ============================================
   const renderProductsPage = () => (
-    <div className="min-h-screen pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+    <div className="min-h-screen pt-28 pb-16 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {renderNavbar()}
         
@@ -1590,7 +1590,7 @@ export default function HomePage() {
                       variant={selectedCategory === 'all' ? 'default' : 'ghost'}
                       className={cn(
                         "w-full justify-start h-11 rounded-xl cursor-pointer",
-                        selectedCategory === 'all' && "bg-gradient-to-r from-purple-600 to-emerald-600"
+                        selectedCategory === 'all' && "bg-purple-600"
                       )}
                       onClick={() => setSelectedCategory('all')}
                     >
@@ -1602,7 +1602,7 @@ export default function HomePage() {
                         variant={selectedCategory === cat.id ? 'default' : 'ghost'}
                         className={cn(
                           "w-full justify-start h-11 rounded-xl cursor-pointer",
-                          selectedCategory === cat.id && "bg-gradient-to-r from-purple-600 to-emerald-600"
+                          selectedCategory === cat.id && "bg-purple-600"
                         )}
                         onClick={() => setSelectedCategory(cat.id)}
                       >
@@ -1653,7 +1653,7 @@ export default function HomePage() {
   // RENDER USER DASHBOARD
   // ============================================
   const renderUserDashboard = () => (
-    <div className="min-h-screen pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+    <div className="min-h-screen pt-28 pb-16 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {renderNavbar()}
         
@@ -1914,7 +1914,7 @@ export default function HomePage() {
                 {store.subscription ? (
                   <div className="space-y-8">
                     <div className="flex items-center gap-6">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600 to-emerald-600 flex items-center justify-center shadow-lg shadow-purple-500/25">
+                      <div className="w-20 h-20 rounded-2xl bg-purple-600 flex items-center justify-center shadow-lg shadow-emerald-500/25">
                         <Crown className="w-10 h-10 text-white" />
                       </div>
                       <div>
@@ -2038,7 +2038,7 @@ export default function HomePage() {
   // RENDER ADMIN DASHBOARD
   // ============================================
   const renderAdminDashboard = () => (
-    <div className="min-h-screen pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900">
+    <div className="min-h-screen pt-28 pb-16 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {renderNavbar()}
         
@@ -2051,7 +2051,7 @@ export default function HomePage() {
             <Button variant="outline" onClick={() => store.setCurrentView('landing')} className="h-12 px-6 rounded-xl cursor-pointer">
               View Site
             </Button>
-            <Button onClick={() => store.setCurrentView('products')} className="h-12 px-6 rounded-xl cursor-pointer bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700">
+            <Button onClick={() => store.setCurrentView('products')} className="h-12 px-6 rounded-xl cursor-pointer bg-purple-600 hover:bg-purple-700">
               <Store className="w-4 h-4 mr-2" /> Manage Products
             </Button>
           </div>
@@ -2059,7 +2059,7 @@ export default function HomePage() {
         
         {/* Stats Overview */}
         <div className="grid md:grid-cols-4 gap-6 mb-10">
-          <Card className="bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-2xl overflow-hidden shadow-xl shadow-purple-500/20">
+          <Card className="bg-purple-600 text-white rounded-2xl overflow-hidden shadow-xl shadow-purple-500/20">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -2075,7 +2075,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-2xl overflow-hidden shadow-xl shadow-emerald-500/20">
+          <Card className="bg-emerald-600 text-white rounded-2xl overflow-hidden shadow-xl shadow-emerald-500/20">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -2091,7 +2091,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-amber-500 to-amber-600 text-white rounded-2xl overflow-hidden shadow-xl shadow-amber-500/20">
+          <Card className="bg-amber-500 text-white rounded-2xl overflow-hidden shadow-xl shadow-amber-500/20">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -2104,7 +2104,7 @@ export default function HomePage() {
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-br from-rose-500 to-rose-600 text-white rounded-2xl overflow-hidden shadow-xl shadow-rose-500/20">
+          <Card className="bg-rose-500 text-white rounded-2xl overflow-hidden shadow-xl shadow-rose-500/20">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -2263,7 +2263,7 @@ export default function HomePage() {
                 </div>
                 <Button
                   size="lg"
-                  className="w-full bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 rounded-xl cursor-pointer"
+                  className="w-full bg-purple-600 hover:bg-purple-700 rounded-xl cursor-pointer"
                   onClick={() => {
                     if (!store.isAuthenticated) {
                       store.openAuthModal()
@@ -2320,7 +2320,7 @@ export default function HomePage() {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer">
+                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-emerald-500 hover:bg-emerald-600">
                   Sign In
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">
@@ -2374,7 +2374,7 @@ export default function HomePage() {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer">
+                <Button type="submit" size="lg" className="w-full rounded-xl cursor-pointer bg-emerald-500 hover:bg-emerald-600">
                   Create Account
                 </Button>
               </form>
@@ -2388,7 +2388,7 @@ export default function HomePage() {
         <DialogContent className="sm:max-w-5xl rounded-3xl">
           {selectedProduct && (
             <div className="grid md:grid-cols-2 gap-10">
-              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+              <div className="aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img
                   src={selectedProduct.featuredImage || JSON.parse(selectedProduct.images)[0]}
                   alt={selectedProduct.name}
@@ -2441,7 +2441,7 @@ export default function HomePage() {
                 <div className="flex gap-4">
                   <Button
                     size="lg"
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 rounded-xl cursor-pointer"
+                    className="flex-1 bg-purple-600 hover:bg-purple-700 rounded-xl cursor-pointer"
                     onClick={() => {
                       handleAddToCart(selectedProduct.id)
                       store.closeProductModal()
@@ -2519,7 +2519,7 @@ export default function HomePage() {
                     <div className={cn(
                       "w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all",
                       checkoutStep === step
-                        ? "bg-gradient-to-r from-purple-600 to-emerald-600 text-white shadow-lg"
+                        ? "bg-purple-600 text-white shadow-lg"
                         : i < ['cart', 'shipping', 'payment'].indexOf(checkoutStep)
                           ? "bg-emerald-500 text-white"
                           : "bg-slate-200 dark:bg-slate-700 text-muted-foreground"
@@ -2772,7 +2772,7 @@ export default function HomePage() {
                       </Button>
                       <Button
                         size="lg"
-                        className="flex-1 bg-gradient-to-r from-purple-600 to-emerald-600 hover:from-purple-700 hover:to-emerald-700 rounded-xl cursor-pointer"
+                        className="flex-1 bg-purple-600 hover:bg-purple-700 rounded-xl cursor-pointer"
                         onClick={handleCheckout}
                       >
                         Place Order
@@ -2798,7 +2798,7 @@ export default function HomePage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel className="rounded-xl cursor-pointer">Cancel</AlertDialogCancel>
-            <AlertDialogAction className="rounded-xl bg-gradient-to-r from-purple-600 to-emerald-600 cursor-pointer" onClick={() => setSelectedPlan(null)}>
+            <AlertDialogAction className="rounded-xl bg-purple-600 cursor-pointer" onClick={() => setSelectedPlan(null)}>
               Proceed to Checkout
             </AlertDialogAction>
           </AlertDialogFooter>
