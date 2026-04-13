@@ -113,15 +113,15 @@ import {
 
 // Import server actions
 import {
-  loginUser,
-  registerUser,
+  login,
+  register,
   getProducts,
   getCategories,
-  getCartItems,
+  getCart,
   addToCart,
   updateCartItem,
   removeFromCart,
-  getWishlistItems,
+  getWishlist,
   addToWishlist,
   removeFromWishlist,
   getOrders,
@@ -134,10 +134,9 @@ import {
   getFAQs,
   subscribeNewsletter,
   submitContactForm,
-  getProductReviews,
+  getReviews,
   createReview,
   getAdminStats,
-  updateProfile,
 } from '@/lib/actions'
 
 // Types
@@ -468,22 +467,22 @@ export default function HomePage() {
     if (store.user && store.isAuthenticated) {
       const fetchUserData = async () => {
         const [cartItems, wishlistItems, orders, subscription, notifications] = await Promise.all([
-          getCartItems(store.user!.id),
-          getWishlistItems(store.user!.id),
-          getOrders(store.user!.id),
-          getSubscription(store.user!.id),
-          getNotifications(store.user!.id)
+          getCart(),
+          getWishlist(),
+          getOrders(),
+          getSubscription(),
+          getNotifications()
         ])
         
-        store.setCartItems(cartItems)
-        store.setWishlistItems(wishlistItems)
-        store.setOrders(orders)
-        store.setSubscription(subscription)
-        store.setNotifications(notifications)
+        store.setCartItems(cartItems as any)
+        store.setWishlistItems(wishlistItems as any)
+        store.setOrders(orders as any)
+        store.setSubscription(subscription as any)
+        store.setNotifications(notifications as any)
         
         if (store.user?.role === 'ADMIN') {
           const stats = await getAdminStats()
-          store.setAdminStats(stats)
+          store.setAdminStats(stats as any)
         }
       }
       
@@ -494,9 +493,9 @@ export default function HomePage() {
   // Handlers
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    const result = await loginUser(loginForm)
-    if (result.success && result.user) {
-      store.setUser(result.user)
+    const result = await login(loginForm)
+    if (result.success && result.data) {
+      store.setUser(result.data as any)
       store.closeAuthModal()
       setLoginForm({ email: '', password: '' })
     } else {
@@ -510,9 +509,9 @@ export default function HomePage() {
       alert('Passwords do not match')
       return
     }
-    const result = await registerUser(registerForm)
-    if (result.success && result.user) {
-      store.setUser(result.user)
+    const result = await register(registerForm)
+    if (result.success && result.data) {
+      store.setUser(result.data as any)
       store.closeAuthModal()
       setRegisterForm({ name: '', email: '', password: '', confirmPassword: '' })
     } else {
@@ -530,23 +529,23 @@ export default function HomePage() {
       store.openAuthModal()
       return
     }
-    await addToCart(store.user.id, productId, 1)
-    const items = await getCartItems(store.user.id)
-    store.setCartItems(items)
+    await addToCart({ productId, quantity: 1 })
+    const items = await getCart()
+    store.setCartItems(items as any)
   }
   
   const handleUpdateCartQuantity = async (itemId: string, quantity: number) => {
     if (!store.user) return
-    await updateCartItem(store.user.id, itemId, quantity)
-    const items = await getCartItems(store.user.id)
-    store.setCartItems(items)
+    await updateCartItem(itemId, quantity)
+    const items = await getCart()
+    store.setCartItems(items as any)
   }
   
   const handleRemoveFromCart = async (itemId: string) => {
     if (!store.user) return
-    await removeFromCart(store.user.id, itemId)
-    const items = await getCartItems(store.user.id)
-    store.setCartItems(items)
+    await removeFromCart(itemId)
+    const items = await getCart()
+    store.setCartItems(items as any)
   }
   
   const handleToggleWishlist = async (productId: string) => {
@@ -556,29 +555,47 @@ export default function HomePage() {
     }
     const isInWishlist = store.wishlistItems.some(i => i.productId === productId)
     if (isInWishlist) {
-      await removeFromWishlist(store.user.id, productId)
+      await removeFromWishlist(productId)
     } else {
-      await addToWishlist(store.user.id, productId)
+      await addToWishlist(productId)
     }
-    const items = await getWishlistItems(store.user.id)
-    store.setWishlistItems(items)
+    const items = await getWishlist()
+    store.setWishlistItems(items as any)
   }
   
   const handleCheckout = async () => {
     if (!store.user) return
     
-    const result = await createOrder(store.user.id, {
-      billing: checkoutForm.billing,
-      shipping: checkoutForm.sameAsBilling ? checkoutForm.billing : checkoutForm.shipping,
-      paymentMethod: checkoutForm.paymentMethod,
+    const result = await createOrder({
+      billingFirstName: checkoutForm.billing.firstName,
+      billingLastName: checkoutForm.billing.lastName,
+      billingEmail: checkoutForm.billing.email,
+      billingPhone: checkoutForm.billing.phone,
+      billingCompany: checkoutForm.billing.company,
+      billingStreet: checkoutForm.billing.street,
+      billingApartment: checkoutForm.billing.apartment,
+      billingCity: checkoutForm.billing.city,
+      billingState: checkoutForm.billing.state,
+      billingZipCode: checkoutForm.billing.zipCode,
+      billingCountry: checkoutForm.billing.country,
+      shippingFirstName: checkoutForm.sameAsBilling ? checkoutForm.billing.firstName : checkoutForm.shipping.firstName,
+      shippingLastName: checkoutForm.sameAsBilling ? checkoutForm.billing.lastName : checkoutForm.shipping.lastName,
+      shippingPhone: checkoutForm.sameAsBilling ? checkoutForm.billing.phone : checkoutForm.shipping.phone,
+      shippingCompany: checkoutForm.sameAsBilling ? checkoutForm.billing.company : checkoutForm.shipping.company,
+      shippingStreet: checkoutForm.sameAsBilling ? checkoutForm.billing.street : checkoutForm.shipping.street,
+      shippingApartment: checkoutForm.sameAsBilling ? checkoutForm.billing.apartment : checkoutForm.shipping.apartment,
+      shippingCity: checkoutForm.sameAsBilling ? checkoutForm.billing.city : checkoutForm.shipping.city,
+      shippingState: checkoutForm.sameAsBilling ? checkoutForm.billing.state : checkoutForm.shipping.state,
+      shippingZipCode: checkoutForm.sameAsBilling ? checkoutForm.billing.zipCode : checkoutForm.shipping.zipCode,
+      shippingCountry: checkoutForm.sameAsBilling ? checkoutForm.billing.country : checkoutForm.shipping.country,
       couponCode: checkoutForm.couponCode || undefined
     })
     
     if (result.success) {
       setCheckoutStep('confirmation')
       store.setCartItems([])
-      const orders = await getOrders(store.user.id)
-      store.setOrders(orders)
+      const orders = await getOrders()
+      store.setOrders(orders as any)
     } else {
       alert(result.error || 'Checkout failed')
     }
